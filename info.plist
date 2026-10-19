@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>name</key>
+	<string>Svelte</string>
+	<key>uuid</key>
+	<string>CD17E9FD-F493-4210-935B-65C76E0F2925</string>
+	<key>description</key>
+	<string>Svelte component grammar (source.svelte), folding and indent rules.</string>
+	<key>contactName</key>
+	<string>Svelte bundle skeleton</string>
+</dict>
+</plist>

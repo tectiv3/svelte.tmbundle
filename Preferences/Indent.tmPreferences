@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>name</key>
+	<string>Indent</string>
+	<key>uuid</key>
+	<string>F3FD61A2-5295-4C3A-97BF-5EDEF64A3496</string>
+	<key>scope</key>
+	<string>source.svelte</string>
+	<key>settings</key>
+	<dict>
+		<key>increaseIndentPattern</key>
+		<string>(?x)
+	(^\s*&lt;(?i:head|body|table|thead|tbody|tfoot|tr|div|select|fieldset|style|script|ul|ol|li|form|dl|section|article|header|footer|nav|aside|template)\b(?:[^&gt;]*[^/&gt;])?&gt;
+	|\{\#(?:if|each|await|key|snippet)\b[^\}]*\}
+	|\{:(?:else|then|catch)\b
+	)</string>
+		<key>decreaseIndentPattern</key>
+		<string>(?x)
+	(^\s*(?:&lt;/(?i:head|body|table|thead|tbody|tfoot|tr|div|select|fieldset|style|script|ul|ol|li|form|dl|section|article|header|footer|nav|aside|template)\s*&gt;
+	|\{/(?:if|each|await|key|snippet)\}
+	|\{:(?:else|then|catch)\b
+	))</string>
+	</dict>
+</dict>
+</plist>
