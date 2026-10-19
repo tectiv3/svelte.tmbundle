@@ -803,6 +803,28 @@
 					<key>patterns</key>
 					<array>
 						<dict>
+							<key>captures</key>
+							<dict>
+								<key>1</key>
+								<dict>
+									<key>name</key>
+									<string>variable.parameter.ts</string>
+								</dict>
+								<key>2</key>
+								<dict>
+									<key>name</key>
+									<string>keyword.operator.optional.ts</string>
+								</dict>
+								<key>3</key>
+								<dict>
+									<key>name</key>
+									<string>keyword.operator.type.annotation.ts</string>
+								</dict>
+							</dict>
+							<key>match</key>
+							<string>(?&lt;=[(,])\s*([_$[:alpha:]][_$[:alnum:]]*)\s*(\?)?\s*(?:(:)|(?==))</string>
+						</dict>
+						<dict>
 							<key>include</key>
 							<string>source.ts</string>
 						</dict>
