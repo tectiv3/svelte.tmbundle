@@ -1092,6 +1092,25 @@
 			<key>name</key>
 			<string>punctuation.definition.tag</string>
 		</dict>
+		<dict>
+			<key>include</key>
+			<string>#entities</string>
+		</dict>
+		<dict>
+			<key>begin</key>
+			<string>[^&lt;{&amp;}][^&lt;{&amp;]*</string>
+			<key>end</key>
+			<string>(?=[&lt;{])</string>
+			<key>name</key>
+			<string>text.html.basic</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#entities</string>
+				</dict>
+			</array>
+		</dict>
 	</array>
 	<key>repository</key>
 	<dict>
