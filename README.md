@@ -45,19 +45,44 @@ include grammar scopes that TextMate does not ship (`source.css.scss`, `source.c
 bundle installed, those blocks render flat. This is deliberate: silently falling back to
 `source.css` or `source.ts` would produce wrong highlighting rather than none.
 
+## Folding and indentation
+
+Folding and indent markers cover the HTML block elements, the `{#if}`/`{#each}`/`{#await}`/
+`{#key}`/`{#snippet}` blocks, and the four `svelte:` tags that can hold markup: `svelte:head`,
+`svelte:fragment`, `svelte:element`, `svelte:component`.
+
+The childless `svelte:` tags (`window`, `body`, `document`, `self`, `options`) are deliberately
+excluded: the self-closing guard ends at the first `>`, which inside an inline handler such as
+`<svelte:window onkeydown={(e) => go(e)} />` is the arrow's own `>`, so including them would
+open a fold and add an indent level for a self-closing element.
+
+Components (`<Card>`) are not fold starts — `HTML.tmbundle` does not fold custom elements
+either.
+
 ## Known gaps
 
-1. Element text content is scoped only as `source.svelte` — no `text.html.basic`. The classic
-   grammar never wrapped element bodies.
-2. Snippet parameters scope as TypeScript object-literal labels (`item` →
-   `entity.name.label.ts`), not `variable.parameter.ts`.
-3. `{:else if cond}` falls through to the generic `{…}` rule and is scoped as TypeScript,
-   while `{:else}` is `keyword.control.conditional`.
-4. `{#await p then v}` gives `then`/`v` no keyword scope.
-5. `<li>x</li>` on one line matches both the fold-start and fold-stop pattern, so it counts as
-   a fold start. Inherited from `HTML.tmbundle`.
-6. Folding has no level for `{:else}`, `{:then}`, `{:catch}`; `<svelte:…>` tags are not fold
-   starts.
+1. Types in snippet and component signatures are not scoped as types: in
+   `{#snippet row(item: Item)}` the annotation `Item` is `variable.other.readwrite.ts`, not
+   `entity.name.type.ts`. Parameter *names* and the `?`/`:` markers are correct; what follows
+   the colon is handed to `source.ts`, which has no way to know it is in a type position.
+2. In a snippet parameter list, `...rest: any[]` leaves `rest` unscoped as a parameter, a
+   parameter whose `?`/`=`/`:` sits on a later line than its name is not recognised, and
+   destructured parameters (`({p, q}: Props)`) are parsed by `source.ts` as an object pattern
+   rather than parameter-scoped.
+3. `{:else if cond}` falls through to the generic `{…}` rule: `else`/`if` come out as
+   `keyword.control.conditional.ts` rather than `keyword.control.conditional`. Same colour class
+   in practice, so it is cosmetic. `{#await p then v}` scopes `v` as `variable`.
+4. `<li>x</li>` on one line matches both the fold-start and the fold-stop pattern. The engine
+   resolves that as a start, so the line counts as an unclosed fold. Identical to
+   `HTML.tmbundle`; not fixable without deviating from it.
+5. Folding cannot give `{:else}`, `{:then}` and `{:catch}` their own level. In
+   `Frameworks/layout/src/folds.cc` a line matching both the start and the stop marker takes
+   the start branch and the stop is never processed, so a marker that should close the previous
+   branch and open the next one instead opens an unclosed fold and steals a later closer. This
+   is a limitation of the line-marker model, not of these patterns.
+6. A bare `&` in text is `invalid.illegal.bad-ampersand.html` (so `R&D` shows as an error) and
+   a bare `<` in text is unscoped. Both come from the upstream `#entities` rules and match
+   `HTML.tmbundle` behaviour.
 
 ## License
 
