@@ -822,7 +822,7 @@
 								</dict>
 							</dict>
 							<key>match</key>
-							<string>(?&lt;=[(,])\s*([_$[:alpha:]][_$[:alnum:]]*)\s*(\?)?\s*(?:(:)|(?==))</string>
+							<string>(?:(?&lt;=[(,])|^)\s*([_$[:alpha:]][_$[:alnum:]]*)\s*(\?)?\s*(?:(:)|(?==))</string>
 						</dict>
 						<dict>
 							<key>include</key>
