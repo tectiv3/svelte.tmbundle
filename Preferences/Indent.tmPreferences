@@ -12,13 +12,13 @@
 	<dict>
 		<key>increaseIndentPattern</key>
 		<string>(?x)
-	(^\s*&lt;(?i:head|body|table|thead|tbody|tfoot|tr|div|select|fieldset|style|script|ul|ol|li|form|dl|section|article|header|footer|nav|aside|template)\b(?:[^&gt;]*[^/&gt;])?&gt;
+	(^\s*&lt;(?i:head|body|table|thead|tbody|tfoot|tr|div|select|fieldset|style|script|ul|ol|li|form|dl|section|article|header|footer|nav|aside|template|svelte:(head|fragment|element|component))\b(?:[^&gt;]*[^/&gt;])?&gt;
 	|\{\#(?:if|each|await|key|snippet)\b[^\}]*\}
 	|\{:(?:else|then|catch)\b
 	)</string>
 		<key>decreaseIndentPattern</key>
 		<string>(?x)
-	(^\s*(?:&lt;/(?i:head|body|table|thead|tbody|tfoot|tr|div|select|fieldset|style|script|ul|ol|li|form|dl|section|article|header|footer|nav|aside|template)\s*&gt;
+	(^\s*(?:&lt;/(?i:head|body|table|thead|tbody|tfoot|tr|div|select|fieldset|style|script|ul|ol|li|form|dl|section|article|header|footer|nav|aside|template|svelte:(head|fragment|element|component))\s*&gt;
 	|\{/(?:if|each|await|key|snippet)\}
 	|\{:(?:else|then|catch)\b
 	))</string>

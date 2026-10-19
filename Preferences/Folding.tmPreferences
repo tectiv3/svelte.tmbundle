@@ -12,13 +12,13 @@
 	<dict>
 		<key>foldingStartMarker</key>
 		<string>(?x)
-	(&lt;(?i:head|body|table|thead|tbody|tfoot|tr|div|select|fieldset|style|script|ul|ol|li|form|dl|section|article|header|footer|nav|aside|template)\b(?:[^&gt;]*[^/&gt;])?&gt;
+	(&lt;(?i:head|body|table|thead|tbody|tfoot|tr|div|select|fieldset|style|script|ul|ol|li|form|dl|section|article|header|footer|nav|aside|template|svelte:(head|fragment|element|component))\b(?:[^&gt;]*[^/&gt;])?&gt;
 	|\{\#(?:if|each|await|key|snippet)\b
 	|\{@html\b(?!.*\})
 	)</string>
 		<key>foldingStopMarker</key>
 		<string>(?x)
-	(&lt;/(?i:head|body|table|thead|tbody|tfoot|tr|div|select|fieldset|style|script|ul|ol|li|form|dl|section|article|header|footer|nav|aside|template)&gt;
+	(&lt;/(?i:head|body|table|thead|tbody|tfoot|tr|div|select|fieldset|style|script|ul|ol|li|form|dl|section|article|header|footer|nav|aside|template|svelte:(head|fragment|element|component))&gt;
 	|\{/(?:if|each|await|key|snippet)\}
 	)</string>
 	</dict>
